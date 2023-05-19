@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>test</title>
+</head>
+
+<body>
+    <div class="parent-container">
+        <div class="element">
+            요소를 설명하는 박스
+        </div>
+        <div class="description-box">
+            요소에 대한 설명이 여기에 들어갑니다.
+        </div>
+    </div>
+
+</body>
+<style>
+    .parent-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .element {
+        width: 200px;
+        height: 100px;
+        background-color: blue;
+        color: white;
+        text-align: center;
+        line-height: 100px;
+    }
+
+    .description-box {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        width: 200px;
+        background-color: gray;
+        color: white;
+        padding: 10px;
+        display: none;
+    }
+
+    .element:hover+.description-box {
+        display: block;
+    }
+</style>
+
+</html>

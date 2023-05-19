@@ -4,8 +4,14 @@ html {
     height: 100%;
     width: 100%;
 }
+
 body {
-    display: inline-flex;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
     gap: 20px;
     justify-content: space-between;
     align-items: center;
@@ -13,12 +19,14 @@ body {
     padding: 20px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
 .color-options {
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
 }
+
 .color-option {
     width: 50px;
     height: 50px;
@@ -27,9 +35,11 @@ body {
     border: 5px solid white;
     transition: transform ease-in-out .1s;
 }
+
 .color-option:hover {
     transform: scale(1.2);
 }
+
 canvas {
     width: 800px;
     height: 800px;
@@ -37,25 +47,41 @@ canvas {
     border-radius: 10px;
 }
 
-.options-and-detailed-options {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
 .options {
+    align-self: center;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-button, label{
-    all:unset;
-    padding: 10px 0px;
+.detailed-options {
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.option {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border-radius: 25px;
+    border: 5px solid white;
+    transition: transform ease-in-out .1s;
+    transition: width 0.3s ease;
+}
+
+.option:hover {
+    transform: scale(1.2);
+    width: 100px;
+}
+
+button,
+label {
+    all: unset;
     text-align: center;
     background-color: royalblue;
     color: white;
-    border-radius: 10px;
     transition: opacity linear .3s;
 }
 
@@ -70,7 +96,7 @@ input#color {
 }
 
 input#text {
-    all:unset;
+    all: unset;
     padding: 10px 0px;
     text-align: center;
     border-radius: 10px;
@@ -80,4 +106,8 @@ input#text {
 
 input#file {
     display: none;
+}
+
+.selected {
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
 }
