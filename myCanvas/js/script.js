@@ -1,13 +1,18 @@
+//CANVAS
 const canvas = document.querySelector("canvas");
 canvas.width = 800;
 canvas.height = 800;
 const ctx = canvas.getContext("2d");
 ctx.lineCap = "round";
-const lineWidth = document.querySelector("#line-width");
-ctx.lineWidth = lineWidth.value;
+
+//color options
 const color = document.querySelector("#color");
 const colorOptions = Array.from(document.querySelectorAll(".color-option"));
 colorOptions.forEach(color => color.addEventListener("click", onColorClick));
+
+//options
+const lineWidth = document.querySelector("#line-width");
+ctx.lineWidth = lineWidth.value;
 const modeBtn = document.querySelector("#mode-btn");
 const destroyBtn = document.querySelector("#destroy-btn");
 const eraseBtn = document.querySelector("#erase-btn");

@@ -22,23 +22,24 @@
 		<div class="color-option" style="background-color: #4b4b4b;" data-color="#4b4b4b"></div>
 		<div class="color-option" style="background-color: #ecf0f1;" data-color="#ecf0f1"></div>
 	</div>
-  <canvas id="canvas"></canvas>
-	<div class="btns">
-		<div>5</div>
-		<input id="line-width" type="range" min="1" max="10" value="5" step="0.1"/>
-		
-		<!-- <button isd="mode-btn" type="button" class="btn btn-secondary">Draw</button>
-		<button id="destroy-btn" type="button" class="btn btn-danger">Destroy</button>
-		<button id="erase-btn" type="button" class="btn btn-warning">Erase</button> -->
-		<button id="mode-btn">Draw</button>
-		<button id="destroy-btn">Destroy</button>
-		<button id="erase-btn">Erase</button>
-		<label for="file">
-			Add Photo
-			<input type="file" accept="image/*" id="file"/>
-		</label>
-		<input type="text" placeholder="Add text here :-)" id="text"/>
-		<button id="save-btn">Save</button>
+  <canvas></canvas>
+	<div class="options-and-detialed-options">
+		<div class="options">
+			<div>5</div>
+			<input id="line-width" type="range" min="1" max="10" value="5" step="0.1"/>
+			<button id="mode-btn">Draw</button>
+			<button id="destroy-btn">Destroy</button>
+			<button id="erase-btn">Erase</button>
+			<label for="file">
+				Add Photo
+				<input type="file" accept="image/*" id="file"/>
+			</label>
+			<input type="text" placeholder="Add text here :-)" id="text"/>
+			<button id="save-btn">Save</button>
+		</div>
+		<div class="detailed-options">
+			<input type="text" placeholder="settings"/>
+		</div>
 	</div>
 	
   <script src="js/script.js"></script>
