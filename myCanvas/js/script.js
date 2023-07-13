@@ -13,19 +13,16 @@ color.value = "#4b4b4b";
 const colorOptions = Array.from(document.querySelectorAll(".color-option"));
 colorOptions.forEach(color => color.addEventListener("click", onColorClick));
 
+
 //options
 const lineWidth = document.querySelector("#line-width");
 ctx.lineWidth = lineWidth.value;
+const backup = {"color": color.value, "lineWidth": lineWidth.value };
 
 //btns
-// const drawBtn = document.querySelector("#draw-btn");
-// const drawAndFillBtn = document.querySelector("#draw-and-fill-btn");
-// const eraseBtn = document.querySelector("#erase-btn");
-// const addTextBtn = document.querySelector("#add-text-btn");
-// const btns = [drawBtn, drawAndFillBtn, eraseBtn, addTextBtn];
 const btns = Array.from(document.querySelectorAll(".option"));
 const modeBtns = btns.slice(0, 4);
-let mode = "draw";
+let mode = "draw"; //draw is default mode
 
 const destroyBtn = document.querySelector("#destroy-btn");
 
@@ -46,7 +43,7 @@ let isMouseDown = false;
 let isFilling = false;
 
 function onMouseMove(event) {
-  if (isMouseDown) {
+  if (isMouseDown && mode !== "addText"){
     x = event.offsetX;
     y = event.offsetY;
 
@@ -54,10 +51,16 @@ function onMouseMove(event) {
     ctx.stroke();
   }
 }
+
 function changeColor(color) {
   ctx.beginPath();
   ctx.strokeStyle = color;
   ctx.fillStyle = color;
+
+  if(mode !== "erase"){
+    backup.color = ctx.strokeStyle;
+    backup.lineWidth = ctx.lineWidth;
+  }
 }
 function changeLineWidth(event) {
   ctx.beginPath();
@@ -77,22 +80,35 @@ function onColorClick(event) {
 
 }
 
+//mode button manage
 function onClickBtn(event) {
+  ctx.beginPath();
+
+  //change mode by input
   switch (event.target.dataset.text) {
     case "✏️":
       mode = "draw";
+      ctx.lineWidth = backup.lineWidth;
+      changeColor(backup.color);
       break;
     case "🧺":
       mode = "drawAndFill";
+      ctx.lineWidth = backup.lineWidth;
+      changeColor(backup.color);
       break;
     case "🗑️":
       mode = "erase";
+      changeColor("white");
+      color.value = "#FFFFFF";
+      ctx.lineWidth = 100;
       break;
     case "🅰️":
       mode = "addText";
       break;
   }
+  console.log(event.target.dataset.text);
 
+  //only selected butotn is highlighted
   event.target.classList.add("selected");
   btns.forEach(btn => {
     if (btn !== event.target) {
@@ -119,7 +135,7 @@ function onMouseMoveBtn(event) {
       event.target.innerText = "🧨" + " Destroy";
       break;
     case "🖼️":
-      event.target.innerText = "🅰️" + " Add Image";
+      event.target.innerText = "🖼️" + " Add Image";
       break;
     case "💾":
       event.target.innerText = "💾" + " Save Image";
@@ -131,26 +147,13 @@ function onMouseOutBtn() {
   btns.forEach(btn => btn.innerText = btn.dataset.text);
 }
 
-function onModeClick() {
-  if (isFilling) {
-    isFilling = false;
-    modeBtn.innerText = "Draw";
-    ctx.lineWidth = lineWidth.value;
-  }
-  else { isFilling = true; modeBtn.innerText = "Fill"; }
-}
+
 
 function onDestroyClick() {
   ctx.fillStyle = "white";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.beginPath();
-}
-
-function onEraseClick(event) {
-  changeColor("white");
-  if (isFilling) onModeClick();
-  color.value = "#FFFFFF";
-  ctx.lineWidth = 100;
+  ctx.fillStyle = backup.color;
 }
 
 function onFileChange(event) {
@@ -164,17 +167,6 @@ function onFileChange(event) {
   }
 }
 
-function onDoubleClick(event) {
-  const text = textInput.value;
-  // ctx.font = "50px Arial";
-  // ctx.lineWidth = 1;
-  // ctx.strokeText(text, event.offsetX, event.offsetY);
-  // ctx.lineWidth = lineWidth.value;
-  if (text !== "") {
-    ctx.fillText(text, event.offsetX, event.offsetY);
-  }
-}
-
 function onSaveClick() {
   const url = canvas.toDataURL();
   const a = document.createElement("a");
@@ -184,12 +176,19 @@ function onSaveClick() {
 }
 
 //CANVAS
-canvas.addEventListener("dblclick", onDoubleClick);
 canvas.addEventListener("click", (event) => {
   //console.log("check");
-  if (isFilling) {
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  if(mode === "addText"){
+      const text = textInput.value;
+      ctx.font = "50px Arial";
+      ctx.lineWidth = 1;
+      ctx.strokeText(text, event.offsetX, event.offsetY);
+      ctx.lineWidth = lineWidth.value;
+      if(text !== ""){
+        ctx.fillText(text, event.offsetX, event.offsetY);
+      }
   }
+
 });
 canvas.addEventListener("mousemove", onMouseMove);
 canvas.addEventListener("mousedown", (event) => {
@@ -198,7 +197,7 @@ canvas.addEventListener("mousedown", (event) => {
 });
 canvas.addEventListener("mouseup", () => {
   isMouseDown = false;
-  ctx.fill();
+  if(mode==="drawAndFill") ctx.fill();
 });
 canvas.addEventListener("mouseout", () => { isMouseDown = false; });
 
@@ -211,13 +210,9 @@ color.addEventListener("change", (event) => {
   });
 });
 
-// modeBtn.addEventListener("click", onModeClick);
-// destroyBtn.addEventListener("click", onDestroyClick);
-// eraseBtn.addEventListener("click", onEraseClick);
 modeBtns.forEach(btn => btn.addEventListener("click", onClickBtn));
 btns.forEach(btn => btn.addEventListener("mousemove", onMouseMoveBtn));
 btns.forEach(btn => btn.addEventListener("mouseout", onMouseOutBtn));
 
-//fileInput.addEventListener("change", onFileChange);
-
-//saveBtn.addEventListener("click", onSaveClick);
+destroyBtn.addEventListener("click", onDestroyClick);
+fileInput.addEventListener("change", onFileChange);
