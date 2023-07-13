@@ -34,14 +34,20 @@
 		<button id="erase-btn" class="option" data-text="🗑️">🗑️</button>
 		<button id="destroy-btn" class="option" data-text="🧨">🧨</button>
 		<!--<button id="add-img-btn" class="option" data-text="🖼️">🖼️</button>-->
-		<label for="file" id="add-img-btn" class="option" data-text="🖼️">
-			🖼️
+		<label for="file" id="add-img-btn" class="option" data-text="ㅤㅤ🖼️">
+			ㅤㅤ🖼️
 			<input type="file" accept="image/*" id="file"/>
 		</label>
+		<button id="ai-btn" class="option" data-text="🤖">🤖</button>
 		<button id="save-btn" class="option" data-text="💾">💾</button>
 	</div>
 	<div>
 		<input id="text" type="text" placeholder="input your text" />
+		<div id="state-text"></div>
+		<div id="ai-colors" class="ai-color-options">
+
+		</div>
+		
 	</div>
 		<!-- <button id="mode-btn">Draw</button>
 		<button id="destroy-btn">Destroy</button>
@@ -60,6 +66,7 @@
 		<input type="text" placeholder="settings" />
 	</div> -->
 
+		<script src="js/gpt.js"></script>
 		<script src="js/script.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"

@@ -24,10 +24,12 @@ const btns = Array.from(document.querySelectorAll(".option"));
 const modeBtns = btns.slice(0, 4);
 let mode = "draw"; //draw is default mode
 
+//special btns
 const destroyBtn = document.querySelector("#destroy-btn");
-
 const fileInput = document.querySelector("#file");
 const textInput = document.querySelector("#text");
+const aiBtn = document.querySelector("#ai-btn");
+const saveBtn = document.querySelector("#save-btn");
 
 const colors = [
   "#ff4d4d",
@@ -41,6 +43,8 @@ const colors = [
 ];
 let isMouseDown = false;
 let isFilling = false;
+
+let aiColorOptions;
 
 function onMouseMove(event) {
   if (isMouseDown && mode !== "addText"){
@@ -73,6 +77,11 @@ function onColorClick(event) {
 
   event.target.classList.add("selected");
   colorOptions.forEach(color => {
+    if (color !== event.target) {
+      color.classList.remove("selected");
+    }
+  });
+  aiColorOptions.forEach(color => {
     if (color !== event.target) {
       color.classList.remove("selected");
     }
@@ -134,8 +143,11 @@ function onMouseMoveBtn(event) {
     case "🧨":
       event.target.innerText = "🧨" + " Destroy";
       break;
-    case "🖼️":
+    case "ㅤㅤ🖼️":
       event.target.innerText = "🖼️" + " Add Image";
+      break;
+    case "🤖":
+      event.target.innerText = "🤖" + "ai recommend color";
       break;
     case "💾":
       event.target.innerText = "💾" + " Save Image";
@@ -165,6 +177,14 @@ function onFileChange(event) {
     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
     fileInput.value = null;
   }
+}
+
+function onAiClick() {
+  stateText.innerText="load...";
+  const toDelete = Array.from(document.querySelectorAll(".ai-color-option"));
+  toDelete.forEach(color => color.remove());
+  showOutput();
+  console.log("check");
 }
 
 function onSaveClick() {
@@ -216,3 +236,5 @@ btns.forEach(btn => btn.addEventListener("mouseout", onMouseOutBtn));
 
 destroyBtn.addEventListener("click", onDestroyClick);
 fileInput.addEventListener("change", onFileChange);
+aiBtn.addEventListener("click", onAiClick);
+saveBtn.addEventListener("click", onSaveClick);
