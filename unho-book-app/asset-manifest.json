@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/unho-book-app/static/css/main.64c47911.css",
+    "main.js": "/unho-book-app/static/js/main.d24882bc.js",
+    "index.html": "/unho-book-app/index.html",
+    "main.64c47911.css.map": "/unho-book-app/static/css/main.64c47911.css.map",
+    "main.d24882bc.js.map": "/unho-book-app/static/js/main.d24882bc.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.64c47911.css",
+    "static/js/main.d24882bc.js"
+  ]
+}
