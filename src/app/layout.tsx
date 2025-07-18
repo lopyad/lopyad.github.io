@@ -1,27 +1,31 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navbar from "./component/Navbar";
+import Sidebar from "./component/Sidebar";
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+// Font Awesome CSS를 전역적으로 임포트
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from '@fortawesome/fontawesome-svg-core';
+// Font Awesome이 CSS를 자동으로 주입하는 것을 막고 수동으로 제어
+config.autoAddCss = false;
 
 export const metadata: Metadata = {
   title: "gh blog",
   description: "lopyad gh blog",
 };
 
-export default function RootLayout({children}: Readonly<{children: React.ReactNode;}>) {
+export default function RootLayout(
+    {children}: Readonly<{children: React.ReactNode;}>) {
   return (
-    <html>
+    <html lang="en">
       <body>
-        <h1>layout</h1>
-        {children}
+        <Navbar />
+        <div className="main-container">
+          <Sidebar />
+          <main className="content-area">
+            {children}
+          </main>
+        </div>
       </body>
     </html>
   );

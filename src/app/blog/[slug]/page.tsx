@@ -1,5 +1,6 @@
 import { getAllPostSlugs, getPostData } from '../../../../lib/posts';
 // import type { Metadata } from 'next';
+import "./page.css"
 
 // 빌드 시점에 생성할 페이지 경로 목록을 Next.js에 알려줍니다.
 export async function generateStaticParams() {
@@ -23,12 +24,12 @@ export default async function Page( props: {params: tParams}) {
 
   return (
     <article>
-      <h1>{postData.title}</h1>
-      <div>
+      <h1 className={"blog-title"}>{postData.title}</h1>
+      <div className={"blog-time"}>
         {postData.date}
       </div>
       <hr />
-      <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
+      <div className={"main-content"} dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
     </article>
   );
 }

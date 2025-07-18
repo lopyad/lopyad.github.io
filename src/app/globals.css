@@ -1,1 +1,375 @@
 
+:root {
+  --bg-primary: #282c34; /* VS Code Dark+ background */
+  --bg-secondary: #21252b; /* Sidebar background */
+  --text-primary: #abb2bf; /* Default text color */
+  --text-secondary: #5c6370; /* Less prominent text */
+  --accent-blue: #61afef;
+  --accent-green: #98c379;
+  --accent-purple: #c678dd;
+  --border-color: #3e4451;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif; /* Or a suitable monospaced font for code */
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  height: 100vh; /* Use full viewport height */
+  overflow: hidden; /* Prevent main scrollbar from appearing */
+  display: flex;
+  flex-direction: column; /* Arrange children (navbar, main-container) vertically */
+}
+
+/* Layout */
+.main-container {
+  display: flex;
+  flex-grow: 1; /* Take up remaining vertical space */
+  overflow: hidden; /* Hide scrollbars for main-container itself */
+}
+
+.content-area {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto; /* Enable scrolling for content */
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 10px 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 30px; /* Consistent height */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+
+.navbar-brand a {
+  color: var(--text-primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand a:hover {
+  color: var(--accent-blue);
+}
+
+.prompt-icon {
+  color: var(--accent-green);
+  margin-right: 8px;
+  font-family: 'Fira Code', 'JetBrains Mono', monospace;
+}
+
+.navbar-links a {
+  color: var(--text-primary);
+  text-decoration: none;
+  margin-left: 20px;
+  padding: 5px 0;
+  position: relative;
+}
+
+.navbar-links a:hover {
+  color: var(--accent-blue);
+}
+
+.navbar-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent-blue);
+  transition: width 0.3s ease;
+}
+
+.navbar-links a:hover::after {
+  width: 100%;
+}
+
+/* Dropdown Styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 20px; /* Spacing between dropdowns */
+}
+
+.dropbtn {
+  color: var(--text-primary);
+  text-decoration: none;
+  padding: 5px 0;
+  position: relative;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1.3em;
+  font-family: inherit;
+}
+
+.dropbtn:hover {
+  color: var(--accent-blue);
+}
+
+.dropbtn::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: var(--accent-blue);
+  transition: width 0.3s ease;
+}
+
+.dropbtn:hover::after {
+  width: 100%;
+}
+
+.dropdown-arrow {
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+  display: inline-block; /* Ensure it respects margin-left */
+}
+
+.dropdown.open .dropdown-arrow {
+  transform: rotate(-90deg); /* Rotate when dropdown is open */
+}
+
+.dropdown-content {
+  display: block;
+  position: absolute;
+  background-color: var(--bg-secondary);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border: 1px solid var(--border-color);
+  /*border-top: none;*/
+  left: 0;
+  top: calc(100% + 5px); /* Position below the button */
+}
+
+.dropdown-content a {
+  color: var(--text-primary);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  margin-left: 0; /* Override navbar-links a margin */
+}
+
+.dropdown-content a:hover {
+  background-color: rgba(97, 175, 239, 0.1);
+  color: var(--accent-blue);
+}
+
+.navbar-toggler {
+  display: none; /* Hidden on desktop */
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.navbar-search-wrapper {
+  position: relative;
+  margin-left: 3vw;
+  /*margin-left: auto;*/
+  /*margin-right: auto;*/
+}
+
+.search-input {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  padding: 8px 12px 8px 35px; /* Add padding for icon */
+  border-radius: 4px;
+  color: var(--text-primary);
+  font-size: 0.9em;
+  width: 180px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 2px rgba(97, 175, 239, 0.2);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary); /* Match text color */
+  font-size: 1.1em;
+  pointer-events: none; /* Allow clicks to pass through to input */
+}
+
+/* Sidebar */
+.sidebar-1st {
+  background-color: var(--bg-secondary);
+  width: 50px;
+  padding: 10px 0;
+  border-right: 1px solid var(--border-color);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  height: 100%; /* Fill remaining height */
+}
+
+.sidebar-section-1st {
+  width: 100%;
+  margin-bottom: 20px;
+  /*padding: 0 20px 10px;*/
+}
+
+.sidebar-1st button {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-1st button:hover {
+  background-color: rgba(97, 175, 239, 0.1);
+  color: var(--accent-blue);
+}
+
+.sidebar-2nd {
+  background-color: var(--bg-secondary);
+  width: 250px;
+  padding: 20px 0;
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  flex-shrink: 0;
+  height: 100%; /* Fill remaining height */
+}
+
+.sidebar-section {
+  margin-bottom: 20px;
+  padding: 0 20px 10px;
+}
+
+.sidebar-section ul {
+  list-style: none; /* Ensure list markers are removed for ul inside sections */
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-title {
+  color: var(--text-secondary);
+  font-size: 0.8em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 5px;
+}
+
+.sidebar-nav {
+  list-style: none; /* Remove list markers */
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 5px;
+}
+
+.sidebar-nav a {
+  color: var(--text-primary);
+  text-decoration: none;
+  display: block;
+  padding: 5px 0;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+  color: var(--accent-blue);
+  background-color: rgba(97, 175, 239, 0.1); /* Light blue background on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: var(--bg-secondary);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding-bottom: 10px;
+  }
+
+  .navbar-links.open {
+    display: flex;
+  }
+
+  .navbar-links a {
+    margin: 0;
+    padding: 10px 20px;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .navbar-toggler {
+    display: block;
+  }
+
+  .main-container {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar-1st,
+  .sidebar-2nd {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0;
+  }
+
+  .content-area {
+    padding-top: 20px;
+  }
+
+  .navbar-search-wrapper {
+    margin-left: 0;
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .search-icon {
+    left: 30px; /* Adjust for mobile padding */
+  }
+}

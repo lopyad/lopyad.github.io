@@ -1,0 +1,25 @@
+.blog-title {
+    display: flex;
+    justify-content: center;
+}
+
+.blog-time {
+    display: flex;
+    justify-content: center;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    height: 1000px;
+}
+
+.main-content p{
+    /*display: flex;*/
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    align-items: center;
+    height: auto;
+}
