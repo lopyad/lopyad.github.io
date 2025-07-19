@@ -19,8 +19,14 @@ body {
   color: var(--text-primary);
   height: 100vh; /* Use full viewport height */
   overflow: hidden; /* Prevent main scrollbar from appearing */
+}
+
+/* App Container */
+.app-container {
   display: flex;
-  flex-direction: column; /* Arrange children (navbar, main-container) vertically */
+  flex-direction: column;
+  height: 100%; /* Ensure it takes full viewport height */
+  overflow: hidden; /* Prevent scrollbars on the container itself */
 }
 
 /* Layout */
@@ -34,6 +40,7 @@ body {
   flex-grow: 1;
   padding: 20px;
   overflow-y: auto; /* Enable scrolling for content */
+  height: 100%; /* Ensure it takes full height of its flex parent */
 }
 
 /* Navbar */
@@ -233,7 +240,7 @@ body {
   flex-direction: column;
   align-items: center;
   overflow-y: auto;
-  height: 100%; /* Fill remaining height */
+  /*height: 100%; !* Fill remaining height *!*/
 }
 
 .sidebar-section-1st {
@@ -266,8 +273,8 @@ body {
   border-right: 1px solid var(--border-color);
   overflow-y: auto;
   flex-shrink: 0;
-  height: 100%; /* Fill remaining height */
-}
+  /*height: 100%; !* Fill remaining height *!*/
+}ㅜ
 
 .sidebar-section {
   margin-bottom: 20px;
@@ -372,4 +379,24 @@ body {
   .search-icon {
     left: 30px; /* Adjust for mobile padding */
   }
+}
+
+/* Footer Bar */
+.footer-bar {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  padding: 5px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 25px; /* Smaller height than Navbar */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Shadow on top */
+  z-index: 1000;
+  flex-shrink: 0; /* Prevent it from shrinking */
+}
+
+.footer-content {
+  font-size: 0.8em;
+  color: var(--text-secondary);
 }

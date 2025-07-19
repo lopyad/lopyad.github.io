@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "./component/Navbar";
 import Sidebar from "./component/Sidebar";
+import FooterBar from "./component/FooterBar";
 
 // Font Awesome CSS를 전역적으로 임포트
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -19,12 +20,15 @@ export default function RootLayout(
   return (
     <html lang="en">
       <body>
-        <Navbar />
-        <div className="main-container">
-          <Sidebar />
-          <main className="content-area">
-            {children}
-          </main>
+        <div className="app-container">
+          <Navbar />
+          <div className="main-container">
+            <Sidebar />
+            <main className="content-area">
+              {children}
+            </main>
+          </div>
+          <FooterBar />
         </div>
       </body>
     </html>
