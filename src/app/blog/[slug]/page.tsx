@@ -3,14 +3,10 @@ import {getAllPostSlugs, getPostData} from '@/lib/postManager';
 import "./page.css"
 
 // 빌드 시점에 생성할 페이지 경로 목록을 Next.js에 알려줍니다.
-export function generateStaticParams() {
+export async function generateStaticParams() {
     const [result, err] = getAllPostSlugs();
-    if(err != null){
-        return [];
-    }
-    else{
-        return result;
-    }
+    if(err != null) return null;
+    return result;
 }
 
 // // 페이지의 메타데이터(예: 브라우저 탭 제목)를 동적으로 설정합니다.
