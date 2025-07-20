@@ -182,15 +182,6 @@ body {
   color: var(--accent-blue);
 }
 
-.navbar-toggler {
-  display: none; /* Hidden on desktop */
-  background: none;
-  border: none;
-  color: var(--text-primary);
-  font-size: 1.5em;
-  cursor: pointer;
-}
-
 .navbar-search-wrapper {
   position: relative;
   margin-left: 3vw;
@@ -341,10 +332,6 @@ body {
     margin: 0;
     padding: 10px 20px;
     border-top: 1px solid var(--border-color);
-  }
-
-  .navbar-toggler {
-    display: block;
   }
 
   .main-container {

@@ -20,23 +20,7 @@ export default function Sidebar() {
             </aside>
             {(isOpen && <aside className="sidebar-2nd">
                 <div className="sidebar-section">
-                    <h3 className="sidebar-title">EXPLORER</h3>
-                    <ul className="sidebar-nav">
-                        <li><Link href="/">Home</Link></li>
-                        <li><Link href="/blog">All Posts</Link></li>
-                        <li><Link href="/categories">Categories</Link></li>
-                        <li><Link href="/tags">Tags</Link></li>
-                    </ul>
                 </div>
-                {/*/!* You can add more sections here, e.g., Recent Posts, About Me *!/*/}
-                {/*<div className="sidebar-section">*/}
-                {/*  <h3 className="sidebar-title">RECENT POSTS</h3>*/}
-                {/*  <ul className="sidebar-nav">*/}
-                {/*    <li><Link href="/blog/my-first-blog">My First Blog</Link></li>*/}
-                {/*    <li><Link href="/blog/my-second-blog">My Second Blog</Link></li>*/}
-                {/*    <li><Link href="/blog/test-post">Test Post</Link></li>*/}
-                {/*  </ul>*/}
-                {/*</div>*/}
             </aside>)}
 
         </>
