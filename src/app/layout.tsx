@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./component/Navbar";
 import Sidebar from "./component/Sidebar";
 import FooterBar from "./component/FooterBar";
+import { getSortedPostsData } from "@/lib/postManager"; // getSortedPostsData 임포트
 
 // Font Awesome CSS를 전역적으로 임포트
 import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -15,15 +16,21 @@ export const metadata: Metadata = {
   description: "lopyad gh blog",
 };
 
-export default function RootLayout(
+export default async function RootLayout(
     {children}: Readonly<{children: React.ReactNode;}>) {
+
+  const [allPostsData, err] = getSortedPostsData();
+  if (err != null) {
+    console.error("Failed to load sorted posts data in layout:", err);
+  }
+
   return (
     <html lang="en">
       <body>
         <div className="app-container">
           <Navbar />
           <div className="main-container">
-            <Sidebar />
+            <Sidebar posts={allPostsData || []} />
             <main className="content-area">
               {children}
             </main>

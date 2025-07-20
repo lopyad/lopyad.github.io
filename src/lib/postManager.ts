@@ -5,7 +5,7 @@ import matter from 'gray-matter';
 
 import { remark } from 'remark';
 import html from 'remark-html';
-import {isMetadata, Metadata, Post, PostPreview, postPath} from "@/types/post";
+import {isMetadata, Post, PostPreview, postPath} from "@/types/post";
 import {Result} from "@/types/type";
 
 // export type Result<T, E> = [T, null] | [null, E];
@@ -26,7 +26,6 @@ export function getSortedPostsData(): Result<PostPreview[], Error> {
 
         // 메타데이터 유효성 검사
         if (!isMetadata(metadata)) {
-          // 에러를 던져서 아래 catch 블록에서 잡도록 함
           throw new Error(`Invalid or missing metadata`);
         }
 

@@ -1,0 +1,97 @@
+.sidebar-1st {
+  background-color: var(--bg-secondary);
+  width: 50px;
+  padding: 10px 0;
+  border-right: 1px solid var(--border-color);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  /*height: 100%; !* Fill remaining height *!*/
+}
+
+.sidebar-section-1st {
+  width: 100%;
+  margin-bottom: 20px;
+  /*padding: 0 20px 10px;*/
+}
+
+.sidebar-1st button {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-1st button:hover {
+  background-color: rgba(97, 175, 239, 0.1);
+  color: var(--accent-blue);
+}
+
+.sidebar-2nd {
+  background-color: var(--bg-secondary);
+  width: 250px;
+  padding: 20px 0;
+  border-right: 1px solid var(--border-color);
+  overflow-y: auto;
+  flex-shrink: 0;
+  /*height: 100%; !* Fill remaining height *!*/
+}
+
+.sidebar-section {
+  margin-bottom: 20px;
+  padding: 0 20px 10px;
+}
+
+.sidebar-section ul {
+  list-style: none; /* Ensure list markers are removed for ul inside sections */
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-title {
+  color: var(--text-secondary);
+  font-size: 0.8em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 5px;
+}
+
+.sidebar-nav {
+  list-style: none; /* Remove list markers */
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-nav li {
+  margin-bottom: 5px;
+}
+
+.sidebar-nav a {
+  color: var(--text-primary);
+  text-decoration: none;
+  display: block;
+  padding: 5px 0;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+  color: var(--accent-blue);
+  background-color: rgba(97, 175, 239, 0.1); /* Light blue background on hover */
+}
+
+.sidebar-nav a:visited {
+  color: var(--text-primary);
+}
+
+
+.hidden {
+  display: none;
+}
