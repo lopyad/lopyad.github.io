@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getSortedPostsData } from '../../../lib/postManager';
+import { getSortedPostsData } from '@/lib/postManager';
 
 export default function BlogPage() {
   const [allPostsData, error] = getSortedPostsData();

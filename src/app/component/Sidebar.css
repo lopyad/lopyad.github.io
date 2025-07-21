@@ -43,7 +43,26 @@
     overflow-y: auto;
     flex-shrink: 0;
     /*height: 100%; !* Fill remaining height *!*/
-}ㅜ
+}
+
+.sidebar-2nd a {
+    /*width: 100%;*/
+    color: var(--text-primary);
+    text-decoration: none;
+    /*display: flex;*/
+    /*align-items: center;*/
+}
+
+.sidebar-2nd li {
+    list-style: none;
+}
+
+
+.sidebar-2nd li:hover {
+    background-color: rgba(97, 175, 239, 0.1);
+    color: var(--accent-blue);
+}
+
 
  .sidebar-section {
      margin-bottom: 20px;
@@ -72,18 +91,25 @@
 }
 
 .sidebar-nav li {
-    margin-bottom: 5px;
+    /* margin-bottom removed, spacing handled by padding on a */
 }
 
 .sidebar-nav a {
     color: var(--text-primary);
     text-decoration: none;
     display: block;
-    padding: 5px 0;
+    padding: 5px 10px; /* Added horizontal padding */
     transition: color 0.2s ease, background-color 0.2s ease;
+    border-radius: 3px; /* Slightly rounded corners for editor feel */
 }
 
 .sidebar-nav a:hover {
     color: var(--accent-blue);
     background-color: rgba(97, 175, 239, 0.1); /* Light blue background on hover */
+}
+
+.sidebar-nav a.active {
+    background-color: var(--accent-blue); /* Stronger highlight for active */
+    color: var(--bg-secondary); /* Text color for active item */
+    font-weight: bold; /* Make active item stand out */
 }

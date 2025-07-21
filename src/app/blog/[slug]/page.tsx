@@ -1,4 +1,4 @@
-import {getAllPostSlugs, getPostData} from '../../../../lib/postManager';
+import {getAllPostSlugs, getPostData} from '@/lib/postManager';
 // import type { Metadata } from 'next';
 import "./page.css"
 
