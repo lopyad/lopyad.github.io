@@ -46,9 +46,6 @@ export default function Navbar() {
           <span className="prompt-icon">&gt;_</span> Lopyad Page
         </Link>
       </div>
-      {/*<button className="navbar-toggler" onClick={() => setIsOpen(!isOpen)}>*/}
-      {/*  ☰*/}
-      {/*</button>*/}
       <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
         <div className={`dropdown ${dropdownOpen ? 'open' : ''}`} ref={dropdownRef}>
           <div className="dropbtn" onClick={(e) => {

@@ -1,4 +1,10 @@
 /* Sidebar */
+:root {
+    --indent-unit: 15px; /* Or whatever value you
+     prefer for each indentation level */
+    }
+
+
 .sidebar-1st {
     background-color: var(--bg-secondary);
     width: 50px;
@@ -12,7 +18,7 @@
     /*height: 100%; !* Fill remaining height *!*/
 }
 
-.sidebar-section-1st {
+.sidebar-1st-content {
     width: 100%;
     margin-bottom: 20px;
     /*padding: 0 20px 10px;*/
@@ -58,18 +64,18 @@
 }
 
 
-.sidebar-2nd li:hover {
-    background-color: rgba(97, 175, 239, 0.1);
-    color: var(--accent-blue);
-}
+/*.sidebar-2nd li:hover {*/
+/*    background-color: rgba(97, 175, 239, 0.1);*/
+/*    color: var(--accent-blue);*/
+/*}*/
 
 
- .sidebar-section {
+ .sidebar-2nd-content {
      margin-bottom: 20px;
      padding: 0 20px 10px;
  }
 
-.sidebar-section ul {
+.sidebar-2nd-content ul {
     list-style: none; /* Ensure list markers are removed for ul inside sections */
     padding: 0;
     margin: 0;
