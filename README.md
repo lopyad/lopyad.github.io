@@ -1,5 +1,5 @@
 # lopyad.github.io - 개인 블로그
-
+https://lopyad.github.io
 Next.js와 TypeScript를 사용하여 구축한 개인 기술 블로그입니다. GitHub Pages에 정적으로 호스팅되며, 마크다운 파일로 콘텐츠를 관리합니다.
 
 ## ✨ 주요 기능 (Features)
