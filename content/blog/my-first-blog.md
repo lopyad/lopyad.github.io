@@ -1,6 +1,7 @@
 ---
 title: "my first blog"
 date: "2025-07-18"
+category: "General"
 ---
 
 본문 내용입니다.  

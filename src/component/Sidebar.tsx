@@ -13,7 +13,7 @@ import {
     SidebarProps
 } from "@/types/Sidebar";
 import {usePathname} from "next/navigation";
-import SidebarTreeItem from "@/app/component/SidebarTreeItem";
+import SidebarTreeItem from "@/component/SidebarTreeItem";
 
 export default function Sidebar({content}: SidebarProps) {
     const pathname = usePathname();
@@ -26,7 +26,7 @@ export default function Sidebar({content}: SidebarProps) {
         if(pathname === "/")
             setSidebarContent(EXAMPLE_homeSidebarContent);
         else if(pathname === "/blog")
-            setSidebarContent(EXAMPLE_blogSidebarContent);
+            setSidebarContent(content);
     }, [pathname]);
 
     const changeSidebarContent = (contentType:ContentType) => {

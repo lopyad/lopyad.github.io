@@ -1,4 +1,3 @@
-
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -7,6 +6,7 @@ import { remark } from 'remark';
 import html from 'remark-html';
 import {isMetadata, Metadata, Post, PostPreview, postPath} from "@/types/post";
 import {Result} from "@/types/type";
+import {SidebarContent, SidebarItem} from "@/types/Sidebar";
 
 // export type Result<T, E> = [T, null] | [null, E];
 const postsDirectory = path.join(process.cwd(), postPath);
@@ -104,4 +104,41 @@ export async function getPostData(slug: string): Promise<Result<Post, Error>> {
     contentHtml: contentHtml,
     metadata: metadata,
   }, null];
+}
+
+export function getPostsGroupedByCategory(): Result<SidebarContent, Error> {
+    const [posts, error] = getSortedPostsData();
+
+    if (error) {
+        return [null, error];
+    }
+
+    const grouped: { [category: string]: PostPreview[] } = {};
+    posts?.forEach(post => {
+        const category = post.metadata.category || 'Uncategorized';
+        if (!grouped[category]) {
+            grouped[category] = [];
+        }
+        grouped[category].push(post);
+    });
+
+    const items: SidebarItem[] = Object.entries(grouped).map(([category, posts]) => {
+        return {
+            label: category,
+            type: 'folder',
+            children: posts.map(post => ({
+                label: `${post.slug}.md`,
+                type: 'file',
+                href: `/blog/${post.slug}`,
+                active: false
+            }))
+        };
+    });
+
+    const sidebarContent: SidebarContent = {
+        title: 'Blog Explorer',
+        items: items
+    };
+
+    return [sidebarContent, null];
 }

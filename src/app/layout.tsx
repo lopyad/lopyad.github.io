@@ -1,14 +1,14 @@
 // 'use client';
 
 import "./globals.css";
-import Navbar from "./component/Navbar";
-import Sidebar from "./component/Sidebar";
-import FooterBar from "./component/FooterBar";
+import Navbar from "@/component/Navbar";
+import Sidebar from "@/component/Sidebar";
+import FooterBar from "@/component/FooterBar";
 
 // Font Awesome CSS를 전역적으로 임포트
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import {config} from '@fortawesome/fontawesome-svg-core';
-import {getAllPostSlugs} from "@/lib/postManager";
+import {getPostsGroupedByCategory} from "@/lib/postManager";
 import {SidebarContent} from "@/types/Sidebar";
 // Font Awesome이 CSS를 자동으로 주입하는 것을 막고 수동으로 제어
 config.autoAddCss = false;
@@ -18,18 +18,12 @@ config.autoAddCss = false;
 export default function RootLayout(
     {children}: Readonly<{ children: React.ReactNode; }>) {
 
-    const section: SidebarContent = {title: "Explorer", items:[]};
-    const [result, err] = getAllPostSlugs();
+    let section: SidebarContent = {title: "Explorer", items:[]};
+    const [result, err] = getPostsGroupedByCategory();
     if(err != null){
 
-    } else {
-        result?.map(({slug}) => {
-            section.items.push({
-                label: slug,
-                type: "file",
-                href: "/"+slug
-            });
-        });
+    } else if(result != null) {
+        section = result;
     }
 
     return (

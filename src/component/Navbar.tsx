@@ -42,7 +42,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-brand">
-        <Link href="/">
+        <Link href="/public">
           <span className="prompt-icon">&gt;_</span> Lopyad Page
         </Link>
       </div>
@@ -55,7 +55,7 @@ export default function Navbar() {
           }}>{dropdownValue} <span className="dropdown-arrow">&lt;</span></div>
           {dropdownOpen && (
             <div className="dropdown-content">
-              <Link href="/" onClick={() => {
+              <Link href="/public" onClick={() => {
                 setDropdownOpen(false);
                 setIsOpen(false);
               }}>Home</Link>
