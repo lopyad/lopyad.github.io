@@ -1,8 +1,6 @@
 'use client';
 
 import {useEffect, useState} from "react";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faCog, faFolder, faSearch} from '@fortawesome/free-solid-svg-icons';
 
 import "./Sidebar.css";
 import {
@@ -14,26 +12,33 @@ import {
 } from "@/types/Sidebar";
 import {usePathname} from "next/navigation";
 import SidebarTreeItem from "@/component/SidebarTreeItem";
+import SidebarNav from "@/component/SidebarNav";
+import SidebarContent from "@/component/SidebarContentSection";
+import path from "path";
+import SidebarContentSection from "@/component/SidebarContentSection";
 
 export default function Sidebar({content}: SidebarProps) {
     const pathname = usePathname();
 
-    const [isOpen, setIsOpen] = useState(true);
+    const [isSidebarContentOpen, setIsSidebarContentOpen] = useState(true);
     const [sidebarContent, setSidebarContent] = useState(EXAMPLE_none);
     const [sidebarContentType, setSidebarContentType] = useState(ContentType.NONE);
 
     useEffect(() => {
-        if(pathname === "/")
-            setSidebarContent(EXAMPLE_homeSidebarContent);
-        else if(pathname === "/blog")
-            setSidebarContent(content);
+        changeSidebarContent(sidebarContentType, pathname);
+        // if(pathname === "/")
+        //     setSidebarContent(EXAMPLE_homeSidebarContent);
+        // else if(pathname === "/blog")
+        //     setSidebarContent(content);
     }, [pathname]);
 
-    const changeSidebarContent = (contentType:ContentType) => {
+    const changeSidebarContent =
+        (contentType:ContentType, pathname: string) => {
+        console.log(pathname);
         if(sidebarContentType === contentType)
-            setIsOpen(!isOpen);
-        else if(!isOpen)
-            setIsOpen(!isOpen);
+            setIsSidebarContentOpen(!isSidebarContentOpen);
+        else if(!isSidebarContentOpen)
+            setIsSidebarContentOpen(!isSidebarContentOpen);
 
         // console.log(sidebarContentType, contentType);
         setSidebarContentType(contentType);
@@ -46,29 +51,9 @@ export default function Sidebar({content}: SidebarProps) {
 
     return (
         <>
-        <aside className="sidebar-1st">
-            <div className="sidebar-1st-content">
-                <button onClick={()=>changeSidebarContent(ContentType.FILE_EXPLORER)}>
-                    <FontAwesomeIcon icon={faFolder} />
-                </button>
-                <button onClick={()=>changeSidebarContent(ContentType.SEARCH)}>
-                    <FontAwesomeIcon icon={faSearch} />
-                </button>
-                <button onClick={()=>changeSidebarContent(ContentType.SETTING)}>
-                    <FontAwesomeIcon icon={faCog} />
-                </button>
-            </div>
-        </aside>
-
-        {isOpen &&
-        <aside className="sidebar-2nd">
-            <div className="sidebar-2nd-content">
-                <h3 className="sidebar-title">{sidebarContent.title}</h3>
-                {sidebarContent.items.map((item)=>(
-                    <SidebarTreeItem key={item.label} item={item} currentPathname={pathname}/>
-                ))}
-            </div>
-        </aside>}
+        <SidebarNav onClick={changeSidebarContent}/>
+        {isSidebarContentOpen &&
+            <SidebarContentSection sidebarContent={sidebarContent} pathname={pathname}/>}
         </>
     );
 }
