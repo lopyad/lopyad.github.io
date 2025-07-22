@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faFolder, faFolderOpen, faFileLines, faChevronRight, faChevronDown} from '@fortawesome/free-solid-svg-icons'; // 아이콘 추가
 import {SidebarItem} from '@/types/Sidebar';
+import "./Sidebar.css";
 
 interface SidebarTreeItemProps {
     item: SidebarItem;
