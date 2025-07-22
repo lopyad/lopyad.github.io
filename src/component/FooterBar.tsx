@@ -1,4 +1,4 @@
-import './FooterBar.css';
+import "./FooterBar.css";
 
 export default function FooterBar() {
   return (

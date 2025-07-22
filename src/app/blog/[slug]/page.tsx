@@ -38,7 +38,7 @@ export default async function Page(props: { params: tParams }) {
                 {postData.metadata.date}
             </div>
             <hr/>
-            <div className={"main-content"} dangerouslySetInnerHTML={{__html: postData.contentHtml}}/>
+            <div className={"markdown-content"} dangerouslySetInnerHTML={{__html: postData.contentHtml}}/>
         </article>
     );
 }

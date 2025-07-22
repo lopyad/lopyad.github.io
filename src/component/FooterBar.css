@@ -1,0 +1,19 @@
+/* Footer Bar */
+.footer-bar {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 5px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 25px; /* Smaller height than Navbar */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Shadow on top */
+    z-index: 1000;
+    flex-shrink: 0; /* Prevent it from shrinking */
+}
+
+.footer-content {
+    font-size: 0.8em;
+    color: var(--text-secondary);
+}

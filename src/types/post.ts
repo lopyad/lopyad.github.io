@@ -3,6 +3,7 @@ export const postPath: string = "content/blog"
 export interface Metadata {
     date: string;
     title: string;
+    category: string;
 }
 
 export interface Post {
@@ -21,6 +22,7 @@ export function isMetadata(obj: object): obj is Metadata{
 
     const hasTitle = "title" in obj && typeof obj.title === "string";
     const hasDate = "date" in obj && typeof obj.date === "string";
+    const hasCategory = "category" in obj && typeof obj.category === "string";
 
-    return hasTitle && hasDate;
+    return hasTitle && hasDate && hasCategory;
 }

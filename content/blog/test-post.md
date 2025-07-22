@@ -2,6 +2,7 @@
 title: "테스트 포스트"
 date: "2025-07-18"
 description: "다양한 Markdown 태그와 줄바꿈을 테스트하기 위한 포스트입니다."
+category: "Tech"
 ---
 
 # 테스트 포스트 제목

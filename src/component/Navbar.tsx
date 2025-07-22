@@ -1,3 +1,4 @@
+
 'use client'; // This component needs client-side interactivity
 
 import Link from 'next/link';
@@ -5,10 +6,10 @@ import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import './Navbar.css';
+import "./Navbar.css";
+
 
 export default function Navbar() {
-  // console.log(styles);
   const [isOpen, setIsOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [dropdownValue, setDropdownValue] = useState("Home");
@@ -45,11 +46,15 @@ export default function Navbar() {
           <span className="prompt-icon">&gt;_</span> Lopyad Page
         </Link>
       </div>
+      {/*<button className="navbar-toggler" onClick={() => setIsOpen(!isOpen)}>*/}
+      {/*  ☰*/}
+      {/*</button>*/}
       <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
         <div className={`dropdown ${dropdownOpen ? 'open' : ''}`} ref={dropdownRef}>
           <div className="dropbtn" onClick={(e) => {
             e.preventDefault();
             setDropdownOpen(!dropdownOpen);
+            // setAboutDropdownOpen(false);
           }}>{dropdownValue} <span className="dropdown-arrow">&lt;</span></div>
           {dropdownOpen && (
             <div className="dropdown-content">
@@ -68,6 +73,22 @@ export default function Navbar() {
             </div>
           )}
         </div>
+
+        {/*<div className={`dropdown ${aboutDropdownOpen ? 'open' : ''}`} ref={aboutDropdownRef}>*/}
+        {/*  <Link href="/about" className="dropbtn" onClick={(e) => {*/}
+        {/*    e.preventDefault();*/}
+        {/*    setAboutDropdownOpen(!aboutDropdownOpen);*/}
+        {/*    setBlogDropdownOpen(false);*/}
+        {/*  }}>About <span className="dropdown-arrow">&lt;</span></Link>*/}
+        {/*  {aboutDropdownOpen && (*/}
+        {/*    <div className="dropdown-content">*/}
+        {/*      <Link href="/about" onClick={() => {*/}
+        {/*        setAboutDropdownOpen(false);*/}
+        {/*        setIsOpen(false);*/}
+        {/*      }}>About</Link>*/}
+        {/*    </div>*/}
+        {/*  )}*/}
+        {/*</div>*/}
       </div>
       <div className="navbar-search-wrapper">
         <FontAwesomeIcon icon={faSearch} className="search-icon" />
