@@ -1,22 +1,45 @@
-<!doctype html>
+---
+import { getCollection } from 'astro:content';
+import "../styles/global.css";
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import Navbar from "../components/Navbar";
+import Sidebar from "../components/Sidebar";
+import Footerbar from "../components/Footerbar";
+
+const { title } = Astro.props;
+
+// 1. 모든 블로그 포스트를 가져옵니다.
+const allPosts = await getCollection('posts');
+---
+
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>{title}</title>
+		<script is:inline>
+			const theme = (() => {
+				if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+					return localStorage.getItem('theme');
+				}
+				return 'dark'; // Default to dark
+			})();
+			document.documentElement.setAttribute('data-theme', theme);
+		</script>
 	</head>
 	<body>
-		<slot />
+		<div class="app-layout">
+			<Navbar />
+			<div class="main-container">
+				{/* 2. 현재 페이지의 경로를 'pathname' prop으로 전달합니다. */}
+				<Sidebar posts={allPosts} pathname={Astro.url.pathname} client:load />
+				<main class="content-wrapper">
+					<slot />
+				</main>
+			</div>
+			<Footerbar client:load/>
+		</div>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

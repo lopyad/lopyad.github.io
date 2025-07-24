@@ -1,0 +1,109 @@
+.sidebarNav {
+    background-color: var(--bg-secondary);
+    width: 50px;
+    padding: 10px 0;
+    border-right: 1px solid var(--border-color);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    height: auto;
+}
+
+.sidebarNavButton {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebarNavButton:hover {
+    background-color: rgba(97, 175, 239, 0.1);
+    color: var(--accent-blue);
+}
+
+.sidebarContent {
+    background-color: var(--bg-secondary);
+    width: 250px;
+    border-right: 1px solid var(--border-color);
+    overflow-y: auto;
+    flex-shrink: 0;
+    height: auto;
+    color: var(--text-secondary);
+}
+
+.sidebarSection {
+    /* margin-bottom 제거 */
+}
+
+.sidebarSectionHeader {
+    padding: 10px 20px;
+    font-weight: 600; /* 살짝 굵게 */
+    color: var(--text-secondary);
+    font-size: 0.8em; /* 작게 */
+    letter-spacing: 0.1em; /* 자간 넓게 */
+    text-transform: uppercase; /* 대문자로 */
+}
+
+.postList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.postLink {
+    text-decoration: none;
+    color: var(--text-secondary);
+    display: flex; /* 아이콘과 텍스트 정렬을 위해 flex 사용 */
+    align-items: center;
+    padding: 4px 20px 4px 30px; /* 위아래 패딩 줄이고, 아이콘을 위해 왼쪽 패딩 늘림 */
+    transition: background-color 0.1s ease, color 0.1s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.9em;
+}
+
+.postLink:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+/* 활성 링크 스타일 */
+.postLink.active {
+    background-color: rgba(97, 175, 239, 0.15);
+    color: var(--text-primary);
+}
+
+.fileIcon {
+    margin-right: 8px;
+    color: var(--text-secondary); /* 아이콘 색상을 무채색으로 변경 */
+    transition: color 0.2s ease;
+}
+
+/* 링크 호버 시 아이콘 색상도 변경 */
+.postLink:hover .fileIcon {
+    color: var(--text-primary);
+}
+
+/* 활성화된 링크의 아이콘 색상 */
+.postLink.active .fileIcon {
+    color: white;
+}
+
+.floatingItem {
+    position: fixed; /* 화면 전체를 기준으로 위치 */
+    z-index: 2000; /* 다른 모든 요소 위에 표시 */
+    pointer-events: none; /* 플로팅 요소 자체가 마우스 이벤트를 가로채지 않도록 함 */
+    background-color: var(--bg-secondary); /* 배경색을 사이드바와 동일하게 */
+    color: var(--text-primary); /* 텍스트 색상도 동일하게 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* 약간의 그림자 효과 */
+    white-space: nowrap; /* 플로팅 요소는 줄바꿈하지 않음 */
+    /* .postLink의 다른 스타일(padding, border-radius 등)은 자동으로 상속됩니다. */
+}

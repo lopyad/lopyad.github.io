@@ -1,0 +1,177 @@
+/* Navbar */
+.navbar {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 10px 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    min-height: var(--navbar-height);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    flex-shrink: 0; /* 컨테이너 공간이 부족해도 줄어들지 않도록 설정 */
+}
+
+.navbarBrand {
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.navbarBrandLink {
+    color: var(--text-primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.navbarBrandLink:hover {
+    color: var(--accent-blue);
+}
+
+.gtIcon {
+    color: var(--accent-green);
+    margin-right: 8px;
+    font-family: 'Fira Code', 'JetBrains Mono', monospace;
+}
+
+/*.navbar-links a {*/
+/*    color: var(--text-primary);*/
+/*    text-decoration: none;*/
+/*    margin-left: 20px;*/
+/*    padding: 5px 0;*/
+/*    position: relative;*/
+/*}*/
+
+/*.navbar-links a:hover {*/
+/*    color: var(--accent-blue);*/
+/*}*/
+
+/*.navbar-links a::after {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    width: 0;*/
+/*    height: 2px;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    background-color: var(--accent-blue);*/
+/*    transition: width 0.3s ease;*/
+/*}*/
+
+/*.navbar-links a:hover::after {*/
+/*    width: 100%;*/
+/*}*/
+
+/*!* Dropdown Styles *!*/
+/*.dropdown {*/
+/*    position: relative;*/
+/*    display: inline-block;*/
+/*    margin-left: 20px; !* Spacing between dropdowns *!*/
+/*}*/
+
+/*.dropbtn {*/
+/*    color: var(--text-primary);*/
+/*    text-decoration: none;*/
+/*    padding: 5px 0;*/
+/*    position: relative;*/
+/*    cursor: pointer;*/
+/*    background: none;*/
+/*    border: none;*/
+/*    font-size: 1.3em;*/
+/*    font-family: inherit;*/
+/*}*/
+
+/*.dropbtn:hover {*/
+/*    color: var(--accent-blue);*/
+/*}*/
+
+/*.dropbtn::after {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    width: 0;*/
+/*    height: 2px;*/
+/*    bottom: 0;*/
+/*    left: 0;*/
+/*    background-color: var(--accent-blue);*/
+/*    transition: width 0.3s ease;*/
+/*}*/
+
+/*.dropbtn:hover::after {*/
+/*    width: 100%;*/
+/*}*/
+
+/*.dropdown-arrow {*/
+/*    margin-left: 5px;*/
+/*    transition: transform 0.3s ease;*/
+/*    display: inline-block; !* Ensure it respects margin-left *!*/
+/*}*/
+
+/*.dropdown.open .dropdown-arrow {*/
+/*    transform: rotate(-90deg); !* Rotate when dropdown is open *!*/
+/*}*/
+
+/*.dropdown-content {*/
+/*    display: block;*/
+/*    position: absolute;*/
+/*    background-color: var(--bg-secondary);*/
+/*    min-width: 160px;*/
+/*    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+/*    z-index: 1;*/
+/*    border: 1px solid var(--border-color);*/
+/*    !*border-top: none;*!*/
+/*    left: 0;*/
+/*    top: calc(100% + 5px); !* Position below the button *!*/
+/*}*/
+
+/*.dropdown-content a {*/
+/*    color: var(--text-primary);*/
+/*    padding: 12px 16px;*/
+/*    text-decoration: none;*/
+/*    display: block;*/
+/*    text-align: left;*/
+/*    transition: background-color 0.2s ease, color 0.2s ease;*/
+/*    margin-left: 0; !* Override navbar-links a margin *!*/
+/*}*/
+
+/*.dropdown-content a:hover {*/
+/*    background-color: rgba(97, 175, 239, 0.1);*/
+/*    color: var(--accent-blue);*/
+/*}*/
+
+/*.navbar-search-wrapper {*/
+/*    position: relative;*/
+/*    margin-left: 3vw;*/
+/*    !*margin-left: auto;*!*/
+/*    !*margin-right: auto;*!*/
+/*}*/
+
+/*.search-input {*/
+/*    background-color: var(--bg-primary);*/
+/*    border: 1px solid var(--border-color);*/
+/*    padding: 8px 12px 8px 35px; !* Add padding for icon *!*/
+/*    border-radius: 4px;*/
+/*    color: var(--text-primary);*/
+/*    font-size: 0.9em;*/
+/*    width: 180px;*/
+/*    transition: border-color 0.2s ease, box-shadow 0.2s ease;*/
+/*}*/
+
+/*.search-input::placeholder {*/
+/*    color: var(--text-secondary);*/
+/*}*/
+
+/*.search-input:focus {*/
+/*    outline: none;*/
+/*    border-color: var(--accent-blue);*/
+/*    box-shadow: 0 0 0 2px rgba(97, 175, 239, 0.2);*/
+/*}*/
+
+/*.search-icon {*/
+/*    position: absolute;*/
+/*    left: 12px;*/
+/*    top: 50%;*/
+/*    transform: translateY(-50%);*/
+/*    color: var(--text-secondary); !* Match text color *!*/
+/*    font-size: 1.1em;*/
+/*    pointer-events: none; !* Allow clicks to pass through to input *!*/
+/*}*/

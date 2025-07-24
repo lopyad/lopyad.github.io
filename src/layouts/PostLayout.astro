@@ -1,0 +1,118 @@
+
+---
+// src/layouts/PostLayout.astro
+import Layout from './Layout.astro';
+
+// 이 레이아웃을 사용하는 모든 페이지는 frontmatter 객체를 전달해야 합니다.
+const { frontmatter } = Astro.props;
+---
+<Layout title={frontmatter.title}>
+  <main class="container">
+    <article>
+      <header>
+        <h1 class="title">{frontmatter.title}</h1>
+        <p class="description">{frontmatter.description}</p>
+        <p class="date">
+          게시일: {new Date(frontmatter.pubDate).toLocaleDateString('ko-KR')}
+        </p>
+      </header>
+      
+      <div class="divider"></div>
+
+      <!-- 마크다운 콘텐츠가 여기에 렌더링됩니다. -->
+      <div class="content">
+        <slot />
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  .title {
+    font-size: 2.8rem;
+    color: var(--text-primary); /* 제목 색상 변경 */
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  .description {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+  }
+  .date {
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+  .divider {
+    border-top: 1px solid var(--border-color);
+    margin: 2rem 0;
+  }
+  .content {
+    line-height: 1.8;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+  }
+  /* 콘텐츠 내 제목 스타일 변경 */
+  .content :global(h1, h2, h3, h4, h5, h6) {
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.3em;
+    margin-bottom: 1rem;
+  }
+  .content :global(h1) { font-size: 2.2rem; }
+  .content :global(h2) { font-size: 1.8rem; margin-top: 2.5rem; }
+  .content :global(h3) { font-size: 1.5rem; margin-top: 2rem; }
+  
+  .content :global(p) {
+    margin-bottom: 1.2rem;
+  }
+  .content :global(ul), .content :global(ol) {
+    padding-left: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+  .content :global(a) {
+    color: var(--accent-blue);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s ease;
+  }
+  .content :global(a:hover) {
+    border-bottom-color: var(--accent-blue);
+  }
+  /* 인용문 스타일 변경 */
+  .content :global(blockquote) {
+    border-left: 3px solid var(--border-color);
+    padding-left: 1rem;
+    margin-left: 0;
+    font-style: italic;
+    color: var(--text-secondary);
+  }
+  /* 코드 블록 스타일 유지 */
+  .content :global(pre) {
+    background-color: var(--bg-secondary);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    overflow-x: auto;
+  }
+  .content :global(code) {
+    font-family: 'Fira Code', 'JetBrains Mono', monospace;
+    background-color: var(--bg-secondary);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+  .content :global(pre > code) {
+    background-color: transparent;
+    padding: 0;
+    font-size: inherit;
+  }
+</style>

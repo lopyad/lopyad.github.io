@@ -1,0 +1,26 @@
+
+---
+// src/pages/blog/[...slug].astro
+import { getCollection } from 'astro:content';
+import PostLayout from '../../layouts/PostLayout.astro';
+
+// 1. getStaticPaths: 빌드 시점에 어떤 경로들을 생성할지 Astro에게 알려줍니다.
+export async function getStaticPaths() {
+  const allPosts = await getCollection('posts');
+  
+  return allPosts.map(post => ({
+    params: { slug: post.slug }, // URL 파라미터가 됩니다. (예: /blog/post-1)
+    props: { post },             // 페이지 컴포넌트로 전달할 데이터입니다.
+  }));
+}
+
+// 2. 페이지 컴포넌트: getStaticPaths에서 전달한 props를 받습니다.
+const { post } = Astro.props;
+
+// 마크다운 콘텐츠를 렌더링할 컴포넌트를 가져옵니다.
+const { Content } = await post.render();
+---
+<PostLayout frontmatter={post.data}>
+  <!-- <Content /> 컴포넌트가 마크다운 본문을 HTML로 렌더링합니다. -->
+  <Content />
+</PostLayout>

@@ -1,0 +1,13 @@
+
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Blog from '../../components/Blog.tsx';
+
+const allPosts = await getCollection('posts');
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<Layout title="블로그">
+  <Blog posts={sortedPosts} client:load />
+</Layout>

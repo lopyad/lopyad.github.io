@@ -1,0 +1,68 @@
+:root {
+    --bg-primary: #282c34;
+    --bg-secondary: #21252b;
+    --text-primary: #abb2bf;
+    --text-secondary: #5c6370;
+    --accent-blue: #61afef;
+    --accent-green: #98c379;
+    --accent-purple: #c678dd;
+    --border-color: #3e4451;
+
+    --navbar-height: 40px;
+    --footerbar-height: 15px;
+}
+
+html[data-theme='light'] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --accent-blue: #007bff;
+    --accent-green: #28a745;
+    --accent-purple: #6f42c1;
+    --border-color: #dee2e6;
+}
+
+html {
+    height: 100%;
+    box-sizing: border-box; /* 1. html에 box-sizing 설정 */
+}
+
+/* 2. 모든 요소와 가상 요소가 html의 box-sizing을 상속받도록 함 */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+
+body {
+    margin: 0;
+    background-color: var(--bg-primary);
+    color: var(--text-primary); /* 기본 글자색 설정 */
+}
+
+.app-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* 뷰포트 높이로 명시적 설정 */
+}
+
+/* body를 포함한 주요 블록 요소들의 기본 margin을 제거하여 스크롤 문제 방지 */
+body, h1, h2, h3, h4, p, ul, ol, figure {
+    margin: 0;
+}
+
+.main-container {
+    display: flex;
+    flex-grow: 1; /* Navbar와 Footerbar를 제외한 나머지 공간을 모두 차지 */
+    overflow: hidden; /* 자식 요소가 넘칠 때 이 컨테이너의 크기를 유지하고 스크롤을 자식에게 위임 */
+}
+
+.content-wrapper {
+    flex-grow: 1; /* 사이드바를 제외한 나머지 가로 공간을 모두 차지 */
+    overflow-y: auto; /* 세로 스크롤을 이 컨테이너가 담당하도록 함 */
+    padding: 20px; /* 콘텐츠 주변에 여백 추가 */
+    scrollbar-gutter: stable; /* 스크롤바 유무에 따른 레이아웃 변경 방지 */
+}
+

@@ -1,0 +1,17 @@
+.footerbar {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-between; /* Change to space-between */
+    align-items: center;
+    width: 100%;
+    min-height: var(--footerbar-height);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    flex-shrink: 0; /* flex 아이템일 때 줄어들지 않도록 설정 */
+}
+
+.themeToggleContainer {
+    /* The toggle button will be pushed to the right */
+}
