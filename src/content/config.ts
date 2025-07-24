@@ -11,6 +11,7 @@ const postsCollection = defineCollection({
     pubDate: z.date(),
     author: z.string().default('Lopyad'),
     tags: z.array(z.string()).optional(),
+    thumbnail: z.string().optional(), // Revert to string type
   }),
 });
 

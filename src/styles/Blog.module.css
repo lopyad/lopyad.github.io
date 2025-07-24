@@ -1,7 +1,17 @@
 .container {
   max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 .postList {
@@ -9,41 +19,55 @@
   padding: 0;
 }
 
-.postItem a {
-  display: block;
-  padding: 1.5rem;
-  border: 1px solid var(--border-color);
+.postItem {
   background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  margin-bottom: 1rem;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.postItem a:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  border-color: var(--accent-blue);
+.postItem:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.postItem a {
+  text-decoration: none;
+  color: inherit;
+  display: flex; /* Use flexbox for horizontal layout */
+  align-items: flex-start; /* Align items to the top */
+  padding: 1.5rem;
+}
+
+.postThumbnail {
+  width: 120px; /* Smaller fixed width for thumbnails */
+  height: 90px; /* Smaller fixed height for thumbnails */
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 1.5rem; /* Add margin to the right of the thumbnail */
+  flex-shrink: 0; /* Prevent thumbnail from shrinking */
+}
+
+.postContent {
+  flex-grow: 1; /* Allow content to take remaining space */
 }
 
 .postTitle {
-  font-size: 1.5rem;
-  margin: 0 0 0.5rem 0;
   color: var(--text-primary);
-}
-
-.postItem a:hover .postTitle {
-    color: var(--accent-blue);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem; /* Slightly smaller title font size */
 }
 
 .postDate {
   color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
 }
 
 .postDescription {
-  margin: 0;
   color: var(--text-primary);
+  font-size: 0.9rem;
 }

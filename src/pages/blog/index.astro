@@ -3,11 +3,35 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Blog from '../../components/Blog.tsx';
+import defaultThumbnail from '../../assets/default.webp'; // Import default thumbnail
+import reactComponentLayerThumbnail from '../../assets/reactComponetLayer.webp'; // Import specific thumbnail
 
 const allPosts = await getCollection('posts');
-const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Map posts to extract thumbnail.src as a string
+const processedPosts = allPosts.map(post => {
+  let thumbnailSrc: string | undefined;
+  if (post.slug === 'react-component-layers') {
+    thumbnailSrc = reactComponentLayerThumbnail.src;
+  } else if (post.data.thumbnail) {
+    thumbnailSrc = post.data.thumbnail; // Assuming it's already a string from config.ts
+  }
+
+  return {
+    ...post,
+    data: {
+      ...post.data,
+      thumbnail: thumbnailSrc,
+    },
+  };
+});
+
+const sortedPosts = processedPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Extract all unique tags
+const allTags = [...new Set(allPosts.flatMap(post => post.data.tags || []))];
 ---
 
 <Layout title="블로그">
-  <Blog posts={sortedPosts} client:load />
+  <Blog posts={sortedPosts} allTags={allTags} defaultImageSrc={defaultThumbnail.src} client:load />
 </Layout>
