@@ -24,11 +24,9 @@ jobs:
       - name: Build Astro project
         run: npm run build
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./dist # Astro 빌드 결과물이 생성되는 디렉토리
-
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          # cname: your-custom-domain.com # 커스텀 도메인을 사용하는 경우 주석 해제 및 설정
