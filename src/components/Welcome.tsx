@@ -12,6 +12,10 @@ const Welcome: FC = () => {
                 <h2>About</h2>
                 <p>Learn more about me.</p>
             </a>
+            <a href="/game" className={styles.card}>
+                <h2>Game</h2>
+                <p>Play various games</p>
+            </a>
         </div>
     );
 };
